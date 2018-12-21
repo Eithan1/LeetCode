@@ -15,6 +15,7 @@ struct ListNode {
 
 class Solution {
 public:
+    /**---------------方法一------------------
     //单链表翻转
     ListNode* ReverseList(ListNode* phead) {
         ListNode* pCur = phead;    //当前节点
@@ -53,6 +54,22 @@ public:
         Rev2Head = ReverseList(RevHead); //再翻转链表
 
         return Rev2Head;
+    }   */
+
+    //方法二
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode* first = head;
+        while(n-- != 0)
+            first = first->next;
+        if(!first)       //要删除的节点是首节点
+            return head->next;
+        ListNode* sec = head;
+        while(first->next != NULL){
+            sec = sec->next;
+            first = first->next;
+        }
+        sec->next = sec->next->next;
+        return head;
     }
 };
 

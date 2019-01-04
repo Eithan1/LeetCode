@@ -8,24 +8,40 @@ using namespace std;
 
 class Solution {
 public:
+    void intRev(int* from, int* to ) { //vector是连续存储的内存空间
+        int t;
+        while(from < to) {
+            t = *from;
+            *from = *to;
+            *to = t;
+            from++;
+            to--;
+        }
+    }
+
     void nextPermutation(vector<int>& nums) {
         //后找
         int i = nums.size() - 2;
         while(i >= 0 && nums[i] >= nums[i + 1])
             --i;
-        if(i < 0)       //已经是最大排列
-            nums.reserve(nums.size());
+        if(i < 0)  {     //已经是最大排列
+            reverse(nums.begin(), nums.end());
+            //intRev(&nums[0], &nums[nums.size() - 1]);
+            return;
+        }
+        else {
+            //小大
+            int j = nums.size() - 1;
+            while(nums[j] <= nums[i])
+                --j;
 
-        //小大
-        int j = nums.size() - 1;
-        while(nums[j] <= nums[i])
-            --j;
+            //交换
+            swap(nums[j], nums[i]);
 
-        //交换
-        swap(nums[j], nums[i]);
-
-        //翻转
-        reverse(nums.begin() + i + 1, nums.end());
+            //翻转
+            reverse(nums.begin() + i + 1, nums.end());
+            //intRev(&nums[i + 1], &nums[nums.size() - 1]);
+        }
     }
 };
 

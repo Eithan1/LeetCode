@@ -25,7 +25,7 @@ public:
                         i++;
                     }
                     resStr += to_string(num) + numToChar[j];
-                    j = 0;
+                    j = 0; //继续从'1'开始匹配
                 }
             }
         }

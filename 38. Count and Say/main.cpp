@@ -25,6 +25,7 @@ public:
                         i++;
                     }
                     resStr += to_string(num) + numToChar[j];
+                    j = 0;
                 }
             }
         }

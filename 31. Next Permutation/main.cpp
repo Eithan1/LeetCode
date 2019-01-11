@@ -32,7 +32,7 @@ public:
         else {
             //小大
             int j = nums.size() - 1;
-            while(nums[j] <= nums[i])
+            while(nums[j] <= nums[i]) //经过上面i的查找，后面肯定是递减的，第一个比nums[i]大的一定是比nums[i]大的最小的数
                 --j;
 
             //交换
